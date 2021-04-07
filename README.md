@@ -6,15 +6,15 @@ Install necessary tools easily with this script.You can install desktop envirome
 ### Installation
 0. Clone the repo .
    ```bash
-   git clone https://github.com/melihi/After-arch.git
+   git clone https://github.com/melihi/After-Arch.git
    ```
 3. Change directory to :
    ```sh
-   cd After-arch
+   cd After-Arch
    ```
 4. Make executeable
    ```bash
-   chmod +x After-arch.sh
+   chmod +x After-Arch.sh
    ```
 5. Run
    ```bash
