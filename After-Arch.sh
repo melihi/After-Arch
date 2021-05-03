@@ -66,6 +66,7 @@ start(){
 	printf "\n $inf 7-) $GREEN  Install Xfce lightdm desktop enviroment  $NORMAL"
 	printf "\n $inf 8-) $GREEN  Install Lxdm lxde desktop enviroment  $NORMAL"
 	printf "\n $inf 9-) $GREEN  Install Extra tools  $NORMAL"
+	printf "\n $inf 10-) $GREEN  Create User and Home directory  $NORMAL"
 
 	selection
 }
@@ -128,6 +129,7 @@ selection(){
 		    15-)Metasploit
 		    16-)Sqlmap
 		    17-)Wpscan
+		    18-)Binwalk
 	    $RESET
 	    """
 	    printf "Do you want to install ? y/n :"
@@ -260,7 +262,8 @@ selection(){
 		13-) obfs4proxy 
 		14-) openssh 
 		15-) tmux 
-		14-) htop
+		16-) htop
+		17-) oh-my-zsh
  		\n $RESET"""
 	   printf "Do you want to install ? y/n :"
 	   read -p "" selection9
@@ -270,7 +273,22 @@ selection(){
 	     printf "\033c"
 	     start
 	    fi
-	    ;;	
+	    ;;
+	  10)
+	   printf "\033c"
+	   printf """$inf $CYAN Creating user and Home directory : 
+		1-) User 
+ 		2-) Home directory
+		3-) Sudo group  :\n $RESET"""
+	    printf "Username :"
+	    read -p "" selection10   
+	     
+		sudo useradd -s /bin/bash -d /home/$selection10/ -m -G sudo $selection10
+	   
+	    printf "\033c"
+	    start
+	    fi
+	    ;;		
 	  *)
 	    printf "\n $warn INVALID \n"
 	    start
@@ -294,7 +312,7 @@ strap(){
 }
 security_tools(){
 	yellow_text "$inf  SECURITY tools installation started . . . \n"
-	pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan blackarch-config-xfce 
+	pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan blackarch-config-xfce binwalk
     	green_text "$succ  SECURITY tools installation finished . . . \n"
 	start
 }
@@ -312,7 +330,8 @@ editor_tools(){
 }
 extra_tools(){
 	yellow_text "$inf  Extra tools installation started . . . \n"
-	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh
+	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	green_text "$succ  Extra tools installation finished . . . \n"
 	start
 }	
