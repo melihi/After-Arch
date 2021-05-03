@@ -287,7 +287,6 @@ selection(){
 	   
 	    printf "\033c"
 	    start
-	    fi
 	    ;;		
 	  *)
 	    printf "\n $warn INVALID \n"
