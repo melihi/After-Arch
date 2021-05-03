@@ -193,7 +193,7 @@ selection(){
 	    read -p "" selection5   
 	    if [ "$selection5" = "$yes" ]; then     
 	     pacman -S open-vm-tools 
-	     systemctl enable vmware-vmblock-fuse.service
+	     systemctl enable vmware-vmblock-fuse.service 
  	     systemctl enable vmtoolsd.service 
  	     start
 	    else
@@ -264,6 +264,7 @@ selection(){
 		15-) tmux 
 		16-) htop
 		17-) oh-my-zsh
+		18-) firefox
  		\n $RESET"""
 	   printf "Do you want to install ? y/n :"
 	   read -p "" selection9
@@ -281,10 +282,12 @@ selection(){
  		2-) Home directory
 		3-) Sudo group  :\n $RESET"""
 	    printf "Username :"
-	    read -p "" selection10   
+	    read -p "" selection10
+		printf "Password :"
+	    read -p "" pawssword   
 	     
-		sudo useradd -s /bin/bash -d /home/$selection10/ -m -G sudo $selection10
-	   
+		sudo useradd  -d /home/$selection10/ -m $selection10 -p $password
+	    echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 	    printf "\033c"
 	    start
 	    ;;		
@@ -297,7 +300,7 @@ selection(){
 }
 
 strap(){
-	yellow_text "$inf \n Strap.sh installation started . . ."
+	yellow_text "$inf \n Strap.sh installation started . . .\n"
 	# Run https://blackarch.org/strap.sh as root and follow the instructions.
 	curl -O https://blackarch.org/strap.sh
 	# Set execute bit
@@ -329,7 +332,8 @@ editor_tools(){
 }
 extra_tools(){
 	yellow_text "$inf  Extra tools installation started . . . \n"
-	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en firefox
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	green_text "$succ  Extra tools installation finished . . . \n"
 	start
