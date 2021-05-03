@@ -280,13 +280,13 @@ selection(){
 	   printf """$inf $CYAN Creating user and Home directory : 
 		1-) User 
  		2-) Home directory
-		3-) Sudo group  :\n $RESET"""
+		3-) Sudo group :\n $RESET"""
 	    printf "Username :"
-	    read -p "" selection10
-		printf "Password :"
-	    read -p "" pawssword   
+	    read  username
+	    printf "Password :"
+	    read  password   
 	     
-		sudo useradd  -d /home/$selection10/ -m $selection10 -p $password
+	    sudo useradd  -d /home/$username -m $username -p $password
 	    echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 	    printf "\033c"
 	    start
