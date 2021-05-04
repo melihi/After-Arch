@@ -67,6 +67,7 @@ start(){
 	printf "\n $inf 8-) $GREEN  Install Lxdm lxde desktop enviroment  $NORMAL"
 	printf "\n $inf 9-) $GREEN  Install Extra tools  $NORMAL"
 	printf "\n $inf 10-) $GREEN  Create User and Home directory  $NORMAL"
+	printf "\n $inf 11-) $GREEN  Install Lxqt desktop enviroment  $NORMAL"
 
 	selection
 }
@@ -130,6 +131,7 @@ selection(){
 		    16-)Sqlmap
 		    17-)Wpscan
 		    18-)Binwalk
+			19-)Exiftool
 	    $RESET
 	    """
 	    printf "Do you want to install ? y/n :"
@@ -247,24 +249,25 @@ selection(){
 	  9)
 	   printf "\033c"
 	   printf """$inf $CYAN Extra tools : 
-		1-) gdb 
-		2-) gcc
-		3-) netcat
-		4-) net-tools
-		5-) net-snmp 
-		6-) whois bind 
-		7-) openvpn 
-		8-) arp-scan 
-		9-) seclists 
-		10-) neofetch 
-		11-) python-pip 
-		12-) torctl 
-		13-) obfs4proxy 
-		14-) openssh 
-		15-) tmux 
-		16-) htop
-		17-) oh-my-zsh
-		18-) firefox
+		1-)gdb 
+		2-)gcc
+		3-)netcat
+		4-)net-tools
+		5-)net-snmp 
+		6-)whois bind 
+		7-)openvpn 
+		8-)arp-scan 
+		9-)seclists 
+		10-)neofetch 
+		11-)python-pip 
+		12-)torctl 
+		13-)obfs4proxy 
+		14-)openssh 
+		15-)tmux 
+		16-)htop
+		17-)oh-my-zsh
+		18-)firefox
+		19-)ghex
  		\n $RESET"""
 	   printf "Do you want to install ? y/n :"
 	   read -p "" selection9
@@ -291,6 +294,19 @@ selection(){
 	    printf "\033c"
 	    start
 	    ;;		
+	  11)
+	   printf "\033c"
+	   printf """$inf $CYAN Desktop enviroment : 
+		1-) Lxqt  :\n $RESET"""
+	    printf "Do you want to install ? y/n :"
+	   read -p "" selection11   
+	   if [ "$selection11" = "$yes" ]; then     
+	     desktop_enviroment_lxqt
+	   else 
+	     printf "\033c"
+	     start
+	    fi
+	    ;;	
 	  *)
 	    printf "\n $warn INVALID \n"
 	    start
@@ -314,7 +330,7 @@ strap(){
 }
 security_tools(){
 	yellow_text "$inf  SECURITY tools installation started . . . \n"
-	pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan blackarch-config-xfce binwalk
+	pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan binwalk perl-image-exiftool 
     	green_text "$succ  SECURITY tools installation finished . . . \n"
 	start
 }
@@ -333,8 +349,7 @@ editor_tools(){
 extra_tools(){
 	yellow_text "$inf  Extra tools installation started . . . \n"
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en firefox
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en firefox ghex
 	green_text "$succ  Extra tools installation finished . . . \n"
 	start
 }	
@@ -350,6 +365,13 @@ desktop_enviroment_lxde(){
 	pacman -S lxde lxdm 
 	systemctl enable lxdm
 	green_text "$succ  Lxde installation finished . . . \n"
+	start
+}
+desktop_enviroment_lxqt(){
+	yellow_text "$inf  Lxqt installation started . . . \n"
+	sudo pacman -S lxqt lxqt-common lxqt-config lxqt-panel lxqt-policykit lxqt-qtplugin lxqt-session pcmanfm-qt lxqt-about lxqt-admin lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-powermanagement lxqt-runner
+	
+	green_text "$succ  Lxqt installation finished . . . \n"
 	start
 }
  
