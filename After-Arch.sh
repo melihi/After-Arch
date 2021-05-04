@@ -57,15 +57,15 @@ sysinfo(){
 
 start(){
 
-	printf "\n $inf 1-) $GREEN  Install BlackArch strap.sh (requirement for security tools) tools $NORMAL"
-	printf "\n $inf 2-) $GREEN  Install Security tools $NORMAL"
-	printf "\n $inf 3-) $GREEN  Install Programming tools $NORMAL"
-	printf "\n $inf 4-) $GREEN  Install Text editors $NORMAL"
-	printf "\n $inf 5-) $GREEN  Install VmWare tools $NORMAL"
-	printf "\n $inf 6-) $GREEN  Install VirtualBox tools $NORMAL"
-	printf "\n $inf 7-) $GREEN  Install Xfce lightdm desktop enviroment  $NORMAL"
-	printf "\n $inf 8-) $GREEN  Install Lxdm lxde desktop enviroment  $NORMAL"
-	printf "\n $inf 9-) $GREEN  Install Extra tools  $NORMAL"
+	printf "\n $inf 1-)  $GREEN  Install BlackArch strap.sh (requirement for security tools) tools $NORMAL"
+	printf "\n $inf 2-)  $GREEN  Install Security tools $NORMAL"
+	printf "\n $inf 3-)  $GREEN  Install Programming tools $NORMAL"
+	printf "\n $inf 4-)  $GREEN  Install Text editors $NORMAL"
+	printf "\n $inf 5-)  $GREEN  Install VmWare tools $NORMAL"
+	printf "\n $inf 6-)  $GREEN  Install VirtualBox tools $NORMAL"
+	printf "\n $inf 7-)  $GREEN  Install Xfce lightdm desktop enviroment  $NORMAL"
+	printf "\n $inf 8-)  $GREEN  Install Lxdm lxde desktop enviroment  $NORMAL"
+	printf "\n $inf 9-)  $GREEN  Install Extra tools  $NORMAL"
 	printf "\n $inf 10-) $GREEN  Create User and Home directory  $NORMAL"
 	printf "\n $inf 11-) $GREEN  Install Lxqt desktop enviroment  $NORMAL"
 
@@ -369,7 +369,7 @@ desktop_enviroment_lxde(){
 }
 desktop_enviroment_lxqt(){
 	yellow_text "$inf  Lxqt installation started . . . \n"
-	sudo pacman -S lxqt lxqt-common lxqt-config lxqt-panel lxqt-policykit lxqt-qtplugin lxqt-session pcmanfm-qt lxqt-about lxqt-admin lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-powermanagement lxqt-runner
+	sudo pacman -S lxqt  lxqt-config lxqt-panel lxqt-policykit lxqt-qtplugin lxqt-session pcmanfm-qt lxqt-about lxqt-admin lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-powermanagement lxqt-runner
 	
 	green_text "$succ  Lxqt installation finished . . . \n"
 	start
