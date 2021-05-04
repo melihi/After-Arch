@@ -297,7 +297,7 @@ selection(){
 	  11)
 	   printf "\033c"
 	   printf """$inf $CYAN Desktop enviroment : 
-		1-) Lxqt  :\n $RESET"""
+		1-) Lxqt  \n $RESET"""
 	    printf "Do you want to install ? y/n :"
 	   read -p "" selection11   
 	   if [ "$selection11" = "$yes" ]; then     
