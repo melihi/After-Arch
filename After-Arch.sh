@@ -68,6 +68,8 @@ start(){
 	printf "\n $inf 9-)  $GREEN  Install Extra tools  $NORMAL"
 	printf "\n $inf 10-) $GREEN  Create User and Home directory  $NORMAL"
 	printf "\n $inf 11-) $GREEN  Install Lxqt desktop enviroment  $NORMAL"
+	printf "\n $inf 12-) $GREEN  Create directories for labs(tryhackme , hackthebox , vulnhub)  $NORMAL"
+
 
 	selection
 }
@@ -132,6 +134,7 @@ selection(){
 		    17-)Wpscan
 		    18-)Binwalk
 			19-)Exiftool
+			20-)John the ripper
 	    $RESET
 	    """
 	    printf "Do you want to install ? y/n :"
@@ -153,7 +156,7 @@ selection(){
 	    	1-)Netbeans
 	    	2-)Python3
 	    	3-)Java JRE
-		4-)Spyder python ide
+		    4-)Spyder python ide
 	    $RESET
 	    """
  	    printf "Do you want to install ? y/n :"
@@ -174,6 +177,8 @@ selection(){
 	    	1-)gedit
 	    	2-)geany
 	    	3-)nano
+			4-)vim
+			5-)vi
 	    	
 	    $RESET
 	    """
@@ -263,11 +268,12 @@ selection(){
 		12-)torctl 
 		13-)obfs4proxy 
 		14-)openssh 
-		15-)tmux 
+		15-)terminator 
 		16-)htop
 		17-)oh-my-zsh
 		18-)firefox
 		19-)ghex
+		20-)zsh
  		\n $RESET"""
 	   printf "Do you want to install ? y/n :"
 	   read -p "" selection9
@@ -306,7 +312,20 @@ selection(){
 	     printf "\033c"
 	     start
 	    fi
-	    ;;	
+	    ;;
+	   12)
+	    printf "\033c"
+	    printf "$inf $CYAN Create ~/CTFs/HackThebox . . . etc. :\n $RESET" 
+	    printf "Do you want to install ? y/n :"
+	    read -p "" selection12
+	    if [ "$selection12" = "$yes" ]; then
+	      mkdir ~/CTFs/ &&  mkdir ~/CTFs/HackTheBox &&  mkdir ~/CTFs/TryHackMe &&  mkdir ~/CTFs/VulnHub &&  mkdir ~/CTFs/PriviaHub &&  mkdir ~/CTFs/Tools
+	    	
+	    else 
+	     printf "\033c"
+	     start
+	    fi
+	    ;;		
 	  *)
 	    printf "\n $warn INVALID \n"
 	    start
@@ -330,7 +349,7 @@ strap(){
 }
 security_tools(){
 	yellow_text "$inf  SECURITY tools installation started . . . \n"
-	pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan binwalk perl-image-exiftool 
+	pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan binwalk perl-image-exiftool john
     	green_text "$succ  SECURITY tools installation finished . . . \n"
 	start
 }
@@ -342,14 +361,14 @@ programming_tools(){
 }
 editor_tools(){
 	yellow_text "$inf  Text editor installation started . . . \n"
-	pacman -S gedit nano geany
+	pacman -S gedit nano geany vim vi
 	green_text "$succ  Text editor installation finished . . . \n"
 	start
 }
 extra_tools(){
 	yellow_text "$inf  Extra tools installation started . . . \n"
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en firefox ghex
+	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en firefox ghex zsh terminator
 	green_text "$succ  Extra tools installation finished . . . \n"
 	start
 }	
