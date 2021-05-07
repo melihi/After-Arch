@@ -41,7 +41,7 @@ _________________________________________
 
 """
 printf "$RESET"
-printf "$RED This script developed by Melih isbilen https://github.com/melihi $RESET"
+printf " \n $RED This script developed by Melih isbilen https://github.com/melihi $RESET"
 
 sysinfo(){
     printf "\n $inf Whoami:$RED $( whoami ) $RESET"
