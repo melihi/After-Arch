@@ -16,6 +16,7 @@ no="n"
 FAILURE=1
 
 printf "\n $CYAN"
+
 echo """
 _________________________________________
                   ##
@@ -56,7 +57,7 @@ sysinfo(){
 }
 
 start(){
-    
+    echo "$RED Melih isbilen $RESET 2021 $BLUE https://github.com/melihi $RESET"
     printf "\n $inf 1-)  $GREEN  Install BlackArch strap.sh (requirement for security tools) tools $NORMAL"
     printf "\n $inf 2-)  $GREEN  Install Security tools $NORMAL"
     printf "\n $inf 3-)  $GREEN  Install Programming tools $NORMAL"
