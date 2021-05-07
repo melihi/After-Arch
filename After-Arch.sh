@@ -289,7 +289,7 @@ selection(){
             read  password
             
             sudo useradd  -d /home/$username -m $username -p $password
-            echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+             #echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
             printf "\033c"
             start
         ;;
