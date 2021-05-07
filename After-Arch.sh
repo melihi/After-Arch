@@ -69,6 +69,7 @@ start(){
 	printf "\n $inf 10-) $GREEN  Create User and Home directory  $NORMAL"
 	printf "\n $inf 11-) $GREEN  Install Lxqt desktop enviroment  $NORMAL"
 	printf "\n $inf 12-) $GREEN  Create directories for labs(tryhackme , hackthebox , vulnhub)  $NORMAL"
+	printf "\n $inf 13-) $GREEN  Remove unnecessary manjaro apps installed default  $NORMAL"
 
 
 	selection
@@ -319,7 +320,27 @@ selection(){
 	    printf "Do you want to install ? y/n :"
 	    read -p "" selection12
 	    if [ "$selection12" = "$yes" ]; then
-	      mkdir ~/CTFs/ &&  mkdir ~/CTFs/HackTheBox &&  mkdir ~/CTFs/TryHackMe &&  mkdir ~/CTFs/VulnHub &&  mkdir ~/CTFs/PriviaHub &&  mkdir ~/CTFs/Tools
+	      mkdir ~/CTFs/ 
+		  mkdir ~/CTFs/HackTheBox 
+		  mkdir ~/CTFs/TryHackMe  
+		  mkdir ~/CTFs/VulnHub 
+		  mkdir ~/CTFs/PriviaHub 
+	      mkdir ~/CTFs/Tools
+	    	
+	    else 
+	     printf "\033c"
+	     start
+	    fi
+	    ;;		
+	    13)
+	    printf "\033c"
+	    printf """$inf $CYAN Uninstall 
+					1-)Bluman :\n $RESET""" 
+	    printf "Do you want to remove ? y/n :"
+	    read -p "" selection12
+	    if [ "$selection12" = "$yes" ]; then
+	      sudo pacman -Rsn bluman hplip 
+		  sudo pacman -Rsn otter-browser smtube trojita mpv micro smplayer smplayer-skins smplayer-themes
 	    	
 	    else 
 	     printf "\033c"
@@ -367,8 +388,9 @@ editor_tools(){
 }
 extra_tools(){
 	yellow_text "$inf  Extra tools installation started . . . \n"
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	
 	sudo pacman -S gdb gcc netcat net-tools net-snmp whois bind openvpn arp-scan seclists neofetch python-pip torctl obfs4proxy openssh tor-browser-en firefox ghex zsh terminator
+	echo 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" copy paste this command for oh-my-zsh installation .'
 	green_text "$succ  Extra tools installation finished . . . \n"
 	start
 }	
