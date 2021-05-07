@@ -335,11 +335,18 @@ selection(){
 	    13)
 	    printf "\033c"
 	    printf """$inf $CYAN Uninstall 
-					1-)Bluman :\n $RESET""" 
+					1-)Blueman
+					2-)hplip
+					3-)otter-browser
+					4-)smtube
+					5-)trojita
+					6-)micro
+					7-)smplayer
+					 \n $RESET""" 
 	    printf "Do you want to remove ? y/n :"
 	    read -p "" selection12
 	    if [ "$selection12" = "$yes" ]; then
-	      sudo pacman -Rsn bluman hplip 
+	      sudo pacman -Rsn blueman hplip 
 		  sudo pacman -Rsn otter-browser smtube trojita mpv micro smplayer smplayer-skins smplayer-themes
 	    	
 	    else 
