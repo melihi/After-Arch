@@ -348,6 +348,7 @@ selection(){
         ;;
         *)
             printf "\n $warn INVALID \n"
+            printf "\033c"
             start
         ;;
     esac
