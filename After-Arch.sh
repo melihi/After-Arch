@@ -136,7 +136,8 @@ selection(){
 		    17-)Wpscan
 		    18-)Binwalk
 			19-)Exiftool
-			20-)John the ripper $RESET \n """
+			20-)John the ripper 
+            21-)Hydra $RESET \n """
             printf "Do you want to install ? y/n :"
             read -p "" selection2
             
@@ -370,7 +371,7 @@ strap(){
 }
 security_tools(){
     yellow_text "$inf  SECURITY tools installation started . . . \n"
-    pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan binwalk perl-image-exiftool john
+    pacman -S nmap masscan nikto amass subfinder sublist3r wireshark-qt gospider dirb ffuf gospider burpsuite zaproxy gobuster metasploit sqlmap wpscan binwalk perl-image-exiftool john hydra
     green_text "$succ  SECURITY tools installation finished . . . \n"
     start
 }
